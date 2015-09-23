@@ -61,7 +61,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     //MARK: IBActions
-    @IBAction func GuessMade(sender: AnyObject) {
+    @IBAction func guessMade(sender: AnyObject) {
         guessTextField.resignFirstResponder()
         checkGuess()
     }
