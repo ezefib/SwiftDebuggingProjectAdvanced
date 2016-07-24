@@ -33,17 +33,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if let guessText = guessTextField.text {
             let guess = Int(guessText)
             if let guessUnwrapped = guess {
-                tries++
+                tries += 1
                 //get tuple back from gameModel
-                let (guessIsCorrect,guessIsHigher) = gameModel.makeGuess(guessUnwrapped)
+                let (guessIsCorrect,guessIsHigher) = gameModel.makeGuess(userGuess: guessUnwrapped)
                 if (guessIsCorrect) {
                     guessFeedback.text = "\(guessUnwrapped)! Well done! You guessed it in \(tries) tries!"
                     //hide the game, and display play again button
-                    playAgainButton.hidden = false
-                    instructionsLabel.hidden = true
-                    instructionsLabel2.hidden = true
-                    guessTextField.hidden = true
-                    guessButton.hidden = true
+                    playAgainButton.isHidden = false
+                    instructionsLabel.isHidden = true
+                    instructionsLabel2.isHidden = true
+                    guessTextField.isHidden = true
+                    guessButton.isHidden = true
                 } else if (guessIsHigher) { //guess was higher, so the player should guess lower
                     guessFeedback.text = "Try \(tries) - \(guessUnwrapped): Bad luck! Lower!"
                 } else {                    //guess was lower, so the player should guess higher
@@ -55,12 +55,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     //MARK: UITextFieldDelegate functions
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         checkGuess()
         return true
     }
-    //MARK: IBActions
+
     @IBAction func guessMade(sender: AnyObject) {
         guessTextField.resignFirstResponder()
         checkGuess()
@@ -71,11 +71,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
         guessFeedback.text = ""
         tries = 0
         //hide the play again button, display the game
-        playAgainButton.hidden = true
-        guessTextField.hidden = false
-        guessButton.hidden = false
-        instructionsLabel.hidden = false
-        instructionsLabel2.hidden = false
+        playAgainButton.isHidden = true
+        guessTextField.isHidden = false
+        guessButton.isHidden = false
+        instructionsLabel.isHidden = false
+        instructionsLabel2.isHidden = false
     }
 }
 
