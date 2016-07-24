@@ -17,7 +17,7 @@ class GameModel {
         computerRandomNumber = GameModel.getRandomNumber()
     }
     //returns correct, is higher
-    func makeGuess(userGuess:Int)->(Bool,Bool) {
+    func makeGuess(_ userGuess:Int)->(Bool,Bool) {
         if (computerRandomNumber == userGuess) {
             return(true,false)
         } else {
